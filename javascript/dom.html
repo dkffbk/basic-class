@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+  </head>
+  <body>
+    <h1>-</h1>
+
+    <ul id="list"></ul>
+
+    <script>
+      // select
+      const title = document.querySelector("h1");
+      // console.log(title);
+
+      // change content
+      title.innerHTML = "DOM";
+
+      // change style
+      title.style.color = "red";
+      title.style.padding = "8px";
+      title.style.border = "2px solid teal";
+      title.style.borderRadius = "8px";
+
+      // SELECTOR -> ul -> id
+      const list = document.getElementById("list");
+
+      // CREAT NEW ELEMENT
+      const li = document.createElement("li");
+
+      // UPDATE CONTENT
+      li.innerHTML = `<b>APPLE</b>`;
+
+      // ADD TO LIST ITEM
+      list.appendChild(li);
+    </script>
+  </body>
+</html>

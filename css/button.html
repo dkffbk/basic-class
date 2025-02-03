@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Button</title>
+    <style>
+      /* button.btn {} */
+      .btn {
+        color: deeppink;
+        background-color: deepskyblue;
+        border: 0 none;
+        /* 
+                all
+                top right botton left
+                y x
+            */
+        padding: 10px 30px;
+        border-radius: 5px;
+        /* border-bottom-left-radius: 8px; */
+        cursor: pointer;
+      }
+      div {
+        width: 150px;
+        height: 75px;
+        background-color: blueviolet;
+        cursor: pointer;
+        margin-top: 50px;
+        transition: all 0.5s;
+      }
+      div:hover {
+        background-color: aqua;
+        width: 200px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn">Read the docs</button>
+
+    <div></div>
+  </body>
+</html>

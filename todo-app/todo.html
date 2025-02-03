@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+
+    <!-- need to include bootstrap css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+  </head>
+
+  <body>
+    <div class="bg-secondary">
+      <div class="container">
+        <h1 class="py-4 text-white text-uppercase">Just Do It!</h1>
+      </div>
+    </div>
+
+    <div class="input-group my-5 container">
+      <input
+        type="text"
+        class="form-control py-3"
+        placeholder="Enter a new task"
+        id="inputTask"
+      />
+      <button class="btn btn-outline-secondary" id="btnAddTask">
+        + Add Task
+      </button>
+    </div>
+
+    <div class="container">
+      <h5
+        class="text-secondary text-uppercase d-flex justify-content-between mb-3"
+      >
+        My Lists
+        <span class="badge" id="total"></span>
+      </h5>
+
+      <ul class="list-group list-group-flush" id="list">
+        <!-- <li class="list-group-item d-flex justify-content-between align-items-center py-3 px-0">
+                <span>Create a new project</span>
+                <div>
+                    <button class="btn btn-outline-primary btn-sm">EDIT</button>
+                    <button class="btn btn-outline-danger btn-sm">DELETE</button>
+                </div>
+            </li> -->
+      </ul>
+    </div>
+
+    <script>
+      // GET ELEMENTS
+      const inputTask = document.getElementById("inputTask");
+      const btn = document.getElementById("btnAddTask");
+      const list = document.getElementById("list");
+      const total = document.getElementById("total");
+
+      let count = 0;
+
+      if (total.innerText === null || total.innerText === "") {
+        total.innerText = count;
+        total.classList.add("text-bg-secondary");
+      }
+
+      inputTask.focus();
+
+      // CALL TO A ADD TASK FUNCTION
+      btn.onclick = addTask;
+
+      // CALL TO A ADD TASK FUNCTION
+      inputTask.onkeydown = function (e) {
+        if (e.key === "Enter" && e.keyCode === 13) addTask();
+      };
+
+      // CREATE ADD TASK FUNCTION
+      function addTask() {
+        let text = inputTask.value.trim();
+
+        // SHOW ERROR MESSAGE
+        if (text === "") {
+          alert("Enter a valid task!");
+          inputTask.focus();
+          return;
+        }
+
+        // CREATE NEW ELEMENT
+        let li = document.createElement("li");
+        // ADD STYLE IN LI ELEMENT
+        li.classList.add(
+          "list-group-item",
+          "d-flex",
+          "justify-content-between",
+          "align-items-center",
+          "py-3",
+          "px-0"
+        );
+        // CREATE TEXT, EDIT & DELETE
+        li.innerHTML = `
+        <span>${text}</span>
+        <div>
+            <button class="btn btn-outline-primary btn-sm" onclick="editTask(this)">EDIT</button>
+            <button class="btn btn-outline-danger btn-sm" onclick="deleteTask(this)">DELETE</button>
+        </div>
+    `;
+
+        // ADD TO LIST ITEM
+        list.appendChild(li);
+
+        // INCREATE TOTAL VALUE
+        count++;
+        total.innerText = count;
+        total.classList.remove("text-bg-secondary");
+        total.classList.add("text-bg-primary");
+
+        // CLEAR TEXT BOX
+        inputTask.value = "";
+        inputTask.focus();
+      }
+
+      // CREATE EDIT TASK FUNCTION
+      function editTask(edit) {
+        let li = edit.parentElement.parentElement;
+        let span = li.querySelector("span");
+        let updateTask = prompt("Edit a new task: ", span.innerText);
+
+        if (updateTask !== null) {
+          span.innerText = updateTask;
+        }
+      }
+
+      // CREATE DELETE TASK FUNCTION
+      function deleteTask(del) {
+        let li = del.parentElement.parentElement;
+        list.removeChild(li);
+
+        count--;
+        if (count === 0) {
+          total.classList.remove("text-bg-primary");
+          total.classList.add("text-bg-secondary");
+        }
+
+        total.innerText = count;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM - Event</title>
+  </head>
+  <body>
+    <div>DOM Event</div>
+
+    <!-- object -> DOM event -> fun() -->
+    <button onclick="change()">CHANGE</button>
+
+    <script>
+      const div = document.querySelector("div");
+
+      function change() {
+        div.style.marginBottom = "20px";
+        div.style.color = "blue";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object</title>
+  </head>
+  <body>
+    <script>
+      const student = {
+        id: 100,
+        "user name": "Winchester",
+        subjects: ["HTML", "CSS", "JavaScript"],
+        address: {
+          street: "19th Street",
+          township: "Latha",
+          name: "Ko San",
+        },
+      };
+
+      document.write(student.id + "<br>");
+      document.write(student["user name"] + "<br>");
+      document.write(student.subjects[2] + "<br>");
+      document.write(student.address.township + "<br>");
+    </script>
+  </body>
+</html>
